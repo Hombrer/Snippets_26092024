@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from MainApp.models import Snippet
 from MainApp.forms import SnippetForm
 
@@ -76,4 +76,7 @@ def snippet_edit(request, snippet_id):
 
 
 def snippet_delete(request, snippet_id):
-    pass
+    if request.method == "GET" or request.method == "POST":
+        snippet = get_object_or_404(Snippet, id=snippet_id)
+        snippet.delete()
+    return redirect("snippets-list")

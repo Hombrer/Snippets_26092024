@@ -46,13 +46,11 @@ def snippet_detail(request, snippet_id):
     else:
         context["snippet"] = snippet
         return render(request, "pages/snippet_detail.html", context)
-    
 
-# def create_snippet(request):
-#     if request.method == "POST":
-#         print(f'{request.POST = }')
-#         form = SnippetForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("snippets-list")
-#         return render(request,'add_snippet.html', {'form': form})
+
+def snippet_edit(request, snippet_id):
+    pass
+
+
+def snippet_delete(request, snippet_id):
+    pass

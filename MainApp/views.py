@@ -12,6 +12,16 @@ def index_page(request):
 
 
 @login_required
+def my_snippets(request):
+    snippets = Snippet.objects.filter(user=request.user)
+    context = {
+        'pagename': 'Мои сниппеты',
+        'snippets': snippets
+        }
+    return render(request, 'pages/view_snippets.html', context)
+
+
+@login_required
 def add_snippet_page(request):
     # Создаем пустую форму при запросе GET
     if request.method == "GET":
